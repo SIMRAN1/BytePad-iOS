@@ -138,7 +138,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         
         
-        UIButton.appearance().setTitleColor(Constants.Color.grey, for: UIControlState())
+        //UIButton.appearance().setTitleColor(Constants.Color.grey, for: UIControlState())
         
         return [downloadButton]
 

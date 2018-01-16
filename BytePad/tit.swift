@@ -12,7 +12,7 @@ import QuickLook
 class DownloadViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, QLPreviewControllerDataSource {
     
     var items = [(name:String,detail:String,url:String)]()
-    
+
     @IBOutlet weak var downloadsTable: UITableView!
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -23,7 +23,7 @@ class DownloadViewController: UIViewController, UITableViewDataSource, UITableVi
         
         print(items[(indexPath as NSIndexPath).row].url)
         
-        //        performSegueWithIdentifier("DocumentViewSegue", sender: items[indexPath.row].url)
+//        performSegueWithIdentifier("DocumentViewSegue", sender: items[indexPath.row].url)
         
         let previewQL = QLPreviewController() // 4
         previewQL.dataSource = self // 5
@@ -37,7 +37,7 @@ class DownloadViewController: UIViewController, UITableViewDataSource, UITableVi
         if let cell = self.downloadsTable.dequeueReusableCell(withIdentifier: "Download Cell") as? DownloadsTableCell {
             
             cell.initCell(items[(indexPath as NSIndexPath).row].name, detail:items[(indexPath as NSIndexPath).row].detail, fileURL: items[(indexPath as NSIndexPath).row].url)
-            
+
             return cell
         }
         
@@ -45,7 +45,7 @@ class DownloadViewController: UIViewController, UITableViewDataSource, UITableVi
         
     }
     
-    
+   
     
     override func viewDidAppear(_ animated: Bool) {
         
@@ -64,7 +64,7 @@ class DownloadViewController: UIViewController, UITableViewDataSource, UITableVi
         // now lets get the directory contents (including folders)
         do {
             let directoryContents = try FileManager.default.contentsOfDirectory(at: documentsUrl[0], includingPropertiesForKeys: nil, options: FileManager.DirectoryEnumerationOptions())
-            print("HI")
+   print("HI")
             print(directoryContents)
             
             for  file in directoryContents {
@@ -102,36 +102,36 @@ class DownloadViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
-        let deleteAction = UITableViewRowAction(style: .normal, title: "Delete", handler: { (action, IndexPath) in
+        let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: { (action, IndexPath) in
             // Remove item from the array
-            
-            /*  guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-             let documentDirectoryFileUrl = documentsDirectory.appendingPathComponent(self.items[(indexPath as NSIndexPath).row].url)
-             print("bc"+String(describing: documentDirectoryFileUrl))
-             // Delete file in document directory
-             if FileManager.default.fileExists(atPath: String(describing: documentDirectoryFileUrl)) {
-             do {
-             try FileManager.default.removeItem(at: documentDirectoryFileUrl)
-             print("pc")
-             } catch {
-             print("Could not delete file: \(error)")
-             }
-             }*/
+           
+          /*  guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+            let documentDirectoryFileUrl = documentsDirectory.appendingPathComponent(self.items[(indexPath as NSIndexPath).row].url)
+            print("bc"+String(describing: documentDirectoryFileUrl))
+            // Delete file in document directory
+            if FileManager.default.fileExists(atPath: String(describing: documentDirectoryFileUrl)) {
+                do {
+                    try FileManager.default.removeItem(at: documentDirectoryFileUrl)
+                    print("pc")
+                } catch {
+                    print("Could not delete file: \(error)")
+                }
+            }*/
             self.removeItemForDocument(itemName: self.items[(indexPath as NSIndexPath).row].name, fileExtension:"."+self.items[(indexPath as NSIndexPath).row].url.characters.split(separator: ".").map(String.init)[1] )
-            self.items.remove(at: IndexPath.row)
+             self.items.remove(at: IndexPath.row)
             
             // Delete the row from the table view
             tableView.deleteRows(at: [IndexPath as IndexPath], with: .fade)
         })
-        
-       // deleteAction.backgroundColor = Constants.Color.grey
+       
+        deleteAction.backgroundColor = Constants.Color.grey
         
         
         return [deleteAction]
@@ -152,4 +152,3 @@ class DownloadViewController: UIViewController, UITableViewDataSource, UITableVi
             print(error.debugDescription)
         }}
 }
-
