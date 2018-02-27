@@ -2,7 +2,7 @@
 //  Constants.swift
 //  BytePad
 //
-//  Created by Utkarsh Bansal on 31/05/16.
+
 //  Copyright © 2016 Software Incubator. All rights reserved.
 //
 

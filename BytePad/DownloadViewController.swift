@@ -2,7 +2,7 @@
 //  DownloadViewController.swift
 //  BytePad
 //
-//  Created by Utkarsh Bansal on 17/04/16.
+
 //  Copyright © 2016 Software Incubator. All rights reserved.
 //
 
@@ -28,7 +28,9 @@ class DownloadViewController: UIViewController, UITableViewDataSource, UITableVi
         let previewQL = QLPreviewController() // 4
         previewQL.dataSource = self // 5
         previewQL.currentPreviewItemIndex = (indexPath as NSIndexPath).row // 6
-        show(previewQL, sender: nil) // 7
+      //  navigationController?.pushViewController(previewQL, animated: true)
+        present(previewQL, animated: true, completion: nil)
+        //show(previewQL, sender: nil) // 7
         
     }
     

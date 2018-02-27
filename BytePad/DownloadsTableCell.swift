@@ -2,7 +2,7 @@
 //  DownloadsTableCell.swift
 //  BytePad
 //
-//  Created by Utkarsh Bansal on 23/04/16.
+
 //  Copyright © 2016 Software Incubator. All rights reserved.
 //
 

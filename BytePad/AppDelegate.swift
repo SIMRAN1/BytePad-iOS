@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  Bytepad-test
 //
-//  Created by Utkarsh Bansal on 17/04/16.
+
 //  Copyright © 2016 Software Incubator. All rights reserved.
 //
 
